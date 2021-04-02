@@ -2,4 +2,12 @@
     <string name="app_name">Submission3</string>
     <string name="no_internet_connection">No Internet Connection</string>
     <string name="connect_timeout">Connect Timeout</string>
+    <string name="splashscreen">Splashscreen</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_favorite">Favorite</string>
+    <string name="home_title">Github Search User</string>
+    <string name="username">Username</string>
+    <string name="search_result">%s users</string>
 </resources>

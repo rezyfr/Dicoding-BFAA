@@ -1,8 +1,10 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -23,6 +25,15 @@ android {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField('String', 'BASE_URL', BASE_URL)
+            buildConfigField('String', 'ACCESS_TOKEN', ACCESS_TOKEN)
+        }
+        debug {
+            debuggable true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField('String', 'BASE_URL', BASE_URL)
+            buildConfigField('String', 'ACCESS_TOKEN', ACCESS_TOKEN)
         }
     }
 
@@ -37,6 +48,10 @@ android {
 
     buildFeatures {
         dataBinding = true
+    }
+
+    packagingOptions {
+        exclude 'META-INF/gradle/incremental.annotation.processors'
     }
 }
 
@@ -68,6 +83,7 @@ dependencies {
     implementation Dependencies.roomRuntime
     implementation Dependencies.roomKtx
     kapt Dependencies.roomCompiler
+    implementation Dependencies.timber
 
     // Retrofit
     implementation Dependencies.retrofit

@@ -15,7 +15,7 @@ object Releases {
 }
 
 object Versions {
-    const val kotlinVersion = "1.4.21"
+    const val kotlinVersion = "1.4.31"
     const val coreKtxVersion = "1.3.2"
     const val appCompatVersion = "1.2.0"
     const val materialVersion = "1.3.0"
