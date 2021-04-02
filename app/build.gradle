@@ -1,0 +1,85 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+android {
+    compileSdkVersion DefaultConfig.compileSdk
+    buildToolsVersion DefaultConfig.buildTools
+
+    defaultConfig {
+        applicationId DefaultConfig.appId
+        minSdkVersion DefaultConfig.minSdk
+        targetSdkVersion DefaultConfig.targetSdk
+        versionCode Releases.versionCode
+        versionName Releases.versionName
+
+        testInstrumentationRunner DefaultConfig.testRunner
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        dataBinding = true
+    }
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation Dependencies.kotlin
+    implementation Dependencies.appCompat
+    implementation Dependencies.coreKtx
+    implementation Dependencies.constraintLayout
+    implementation Dependencies.material
+    implementation Dependencies.activityKtx
+    implementation Dependencies.fragmentKtx
+    implementation Dependencies.lifeCycle
+    implementation Dependencies.navFragment
+    implementation Dependencies.navUi
+    implementation Dependencies.glide
+    implementation Dependencies.glideLegacy
+    kapt Dependencies.glideKapt
+    implementation Dependencies.coroutineCore
+    implementation Dependencies.coroutineAndroid
+    implementation Dependencies.hilt
+    implementation Dependencies.hiltViewModel
+    kapt Dependencies.hiltCompiler
+    implementation Dependencies.daggerHiltAndroid
+    implementation Dependencies.daggerHiltCompiler
+    androidTestImplementation Dependencies.hiltTest
+    implementation Dependencies.roomRuntime
+    implementation Dependencies.roomKtx
+    kapt Dependencies.roomCompiler
+
+    // Retrofit
+    implementation Dependencies.retrofit
+    implementation Dependencies.retrofitGson
+
+    // OkHttp
+    implementation (Dependencies.okHttp){
+        force = true
+    }
+    implementation Dependencies.interceptor
+
+    testImplementation Dependencies.junit
+    androidTestImplementation Dependencies.extJunit
+    androidTestImplementation Dependencies.espresso
+}
