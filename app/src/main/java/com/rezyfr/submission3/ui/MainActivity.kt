@@ -1,13 +1,17 @@
 package com.rezyfr.submission3.ui
 
+import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.rezyfr.submission3.R
 import com.rezyfr.submission3.base.BaseActivity
 import com.rezyfr.submission3.base.BaseViewModel
 import com.rezyfr.submission3.databinding.ActivityMainBinding
+import com.rezyfr.submission3.ui.home.HomeFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -17,9 +21,11 @@ class MainActivity : BaseActivity<BaseViewModel, ActivityMainBinding>() {
 
     override val viewModel by viewModels<MainViewModel>()
 
+    private lateinit var navHostFragment: NavHostFragment
     var isMenuShown = false
 
     override fun setupView() {
+        navHostFragment = supportFragmentManager.findFragmentById(R.id.main_nav_host_fragment) as NavHostFragment
         setupToolbar()
         setupNavigation()
     }
@@ -49,6 +55,16 @@ class MainActivity : BaseActivity<BaseViewModel, ActivityMainBinding>() {
         if (show && !isMenuShown) {
             isMenuShown = true
             binding.toolbarMain.inflateMenu(R.menu.menu_home)
+            binding.toolbarMain.setOnMenuItemClickListener {
+                when(it.itemId){
+                    R.id.action_home_favorite -> {
+                        val action =
+                            HomeFragmentDirections.actionHomeFragmentToFavoriteFragment()
+                        navHostFragment.findNavController().navigate(action)
+                    }
+                }
+                false
+            }
         }
     }
 

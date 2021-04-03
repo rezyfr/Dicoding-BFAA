@@ -30,6 +30,21 @@
         <action
             android:id="@+id/action_homeFragment_to_detailFragment"
             app:destination="@id/userDetailFragment" />
+
+        <action
+            android:id="@+id/action_homeFragment_to_favoriteFragment"
+            app:destination="@id/favoriteFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.rezyfr.submission3.ui.favorite.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite">
+
+        <action
+            android:id="@+id/action_favoriteFragment_to_detailFragment"
+            app:destination="@id/userDetailFragment" />
     </fragment>
 
     <fragment

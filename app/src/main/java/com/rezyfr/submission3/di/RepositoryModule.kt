@@ -1,5 +1,6 @@
 package com.rezyfr.submission3.di
 
+import android.content.Context
 import com.rezyfr.submission3.data.database.dao.FavoriteDao
 import com.rezyfr.submission3.data.repository.FavoriteRepository
 import com.rezyfr.submission3.data.repository.FavoriteRepositoryImpl
@@ -9,6 +10,7 @@ import com.rezyfr.submission3.network.GithubApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -26,8 +28,9 @@ object RepositoryModule {
     @Provides
     @Singleton
     fun provideFavoriteRepository(
-        favoriteDao: FavoriteDao
+        favoriteDao: FavoriteDao,
+        @ApplicationContext context: Context
     ): FavoriteRepository {
-        return FavoriteRepositoryImpl(favoriteDao)
+        return FavoriteRepositoryImpl(favoriteDao, context)
     }
 }

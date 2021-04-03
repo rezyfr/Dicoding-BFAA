@@ -8,6 +8,10 @@
         <variable
             name="user"
             type="com.rezyfr.submission3.data.model.UserModel" />
+
+        <variable
+            name="favEntity"
+            type="com.rezyfr.submission3.data.entity.UserFavoriteEntity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,7 +21,7 @@
 
         <ImageView
             android:id="@+id/item_user_img_profile"
-            imageUrl="@{user.avatar_url}"
+            imageUrl="@{user.avatar_url ?? favEntity.avatar_url}"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginBottom="12dp"
@@ -41,7 +45,7 @@
                 android:id="@+id/tvUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{user.login}"
+                android:text="@{user.login ?? favEntity.login}"
                 android:textColor="@color/colorOnPrimary"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -53,9 +57,9 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:singleLine="true"
-                android:text="@{user.html_url}"
+                android:text="@{user.html_url ?? favEntity.email}"
                 android:textColor="@color/colorOnPrimary"
-                tools:text="Role" />
+                tools:text="Repo" />
         </LinearLayout>
 
         <ImageView

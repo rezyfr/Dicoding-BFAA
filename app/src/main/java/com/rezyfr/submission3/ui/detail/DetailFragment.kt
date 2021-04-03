@@ -7,12 +7,14 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
 import com.rezyfr.submission3.R
 import com.rezyfr.submission3.base.BaseFragment
+import com.rezyfr.submission3.data.entity.UserFavoriteEntity
 import com.rezyfr.submission3.databinding.FragmentDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class DetailFragment : BaseFragment<FragmentDetailBinding, DetailViewModel>() {
 
+    private var favoriteEntity: UserFavoriteEntity? = null
     override fun layoutRes() = R.layout.fragment_detail
     override var title = MutableLiveData("Detail User")
     override val viewModel by viewModels<DetailViewModel>()
@@ -20,7 +22,6 @@ class DetailFragment : BaseFragment<FragmentDetailBinding, DetailViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            fabDetail.show()
             arguments?.let {
                 val username = DetailFragmentArgs.fromBundle(it).username
                 viewModel.fetchUserDetail(username)
@@ -34,9 +35,11 @@ class DetailFragment : BaseFragment<FragmentDetailBinding, DetailViewModel>() {
             }
 
             fabDetail.setOnClickListener {
-                user?.let { user ->
-                    viewModel.addUserToFavorite(user)
-                    fabDetail.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_favorite_filled))
+                user?.let {
+                    if (favoriteEntity != null)
+                        viewModel.deleteUserFromFavorite(it)
+                    else
+                        viewModel.addUserToFavorite(it)
                 }
             }
         }
@@ -46,6 +49,26 @@ class DetailFragment : BaseFragment<FragmentDetailBinding, DetailViewModel>() {
         viewModel.userDetail.observe(viewLifecycleOwner, {
             binding.user = it
             binding.fabDetail.show()
+            viewModel.checkIsUserFavorited(it.id)
+        })
+
+        viewModel.favoriteEntity.observe(viewLifecycleOwner, {
+            if (it == null) {
+                binding.fabDetail.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_favorite_outlined
+                    )
+                )
+            } else {
+                binding.fabDetail.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_favorite_filled
+                    )
+                )
+                favoriteEntity = it
+            }
         })
     }
 }

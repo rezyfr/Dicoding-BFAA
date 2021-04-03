@@ -23,7 +23,7 @@ abstract class SubmissionDatabase : RoomDatabase() {
             Room.databaseBuilder(
                 context.applicationContext,
                 SubmissionDatabase::class.java,
-                "Paramoor.db"
+                "Submission3.db"
             ).build()
     }
 
