@@ -10,4 +10,9 @@
     <string name="home_title">Github Search User</string>
     <string name="username">Username</string>
     <string name="search_result">%s users</string>
+    <string name="followers_count">"%d followers"</string>
+    <string name="following_count">"%d following"</string>
+    <string name="followers">"Follower"</string>
+    <string name="following">"Following"</string>
+    <string name="repository">"%d repositories"</string>
 </resources>

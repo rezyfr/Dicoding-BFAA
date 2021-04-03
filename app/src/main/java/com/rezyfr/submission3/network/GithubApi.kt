@@ -14,7 +14,7 @@ interface GithubApi {
     ): SearchResponse
 
     @GET("users/{username}")
-    suspend fun getUser(
+    suspend fun getUserDetail(
         @Path("username") username: String
     ): UserDetailResponse
 

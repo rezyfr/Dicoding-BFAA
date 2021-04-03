@@ -26,5 +26,23 @@
         android:name="com.rezyfr.submission3.ui.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/userDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/userDetailFragment"
+        android:name="com.rezyfr.submission3.ui.detail.DetailFragment"
+        android:label="fragment_user_detail"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="username"
+            app:argType="string" />
+        <argument
+            android:name="user"
+            app:argType="com.rezyfr.submission3.data.response.UserDetailResponse"
+            app:nullable="true" />
     </fragment>
 </navigation>

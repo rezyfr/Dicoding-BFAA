@@ -33,7 +33,7 @@ abstract class BaseActivity<VM : BaseViewModel, T : ViewDataBinding> : AppCompat
     protected fun observeErrorEvent() {
         viewModel.apply {
             isLoading.observe(this@BaseActivity) {
-                handleLoading(it == true)
+                handleLoading(it)
             }
             errorMessage.observe(this@BaseActivity) {
                 when (it) {
@@ -68,7 +68,7 @@ abstract class BaseActivity<VM : BaseViewModel, T : ViewDataBinding> : AppCompat
 
     fun handleErrorMessage(message: String?) {
         if (message.isNullOrBlank()) return
-        hideLoadingDialog()
+        hideLoading()
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 

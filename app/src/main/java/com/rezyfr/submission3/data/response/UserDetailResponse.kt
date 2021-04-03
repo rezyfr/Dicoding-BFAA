@@ -1,7 +1,11 @@
 package com.rezyfr.submission3.data.response
 
+import android.os.Parcelable
 import com.rezyfr.submission3.data.entity.UserFavoriteEntity
+import kotlinx.android.parcel.Parcelize
+import java.io.Serializable
 
+@Parcelize
 data class UserDetailResponse(
     val avatar_url: String?,
     val bio: String?,
@@ -35,7 +39,7 @@ data class UserDetailResponse(
     val type: String?,
     val updated_at: String?,
     val url: String?
-) {
+) : Parcelable {
     fun toFavoriteEntity() = UserFavoriteEntity(
         avatar_url,
         bio,
