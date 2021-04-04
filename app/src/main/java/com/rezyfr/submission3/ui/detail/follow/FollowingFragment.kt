@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
+import androidx.navigation.fragment.findNavController
 import com.rezyfr.submission3.R
 import com.rezyfr.submission3.base.BaseFragment
 import com.rezyfr.submission3.data.model.UserModel
@@ -55,12 +56,9 @@ class FollowingFragment : BaseFragment<FragmentFollowBinding, FollowViewModel>()
         })
     }
 
-//    override fun onUserClickListener(view: View, data: UserSearch) {
-//        val action = ProfileFragmentDirections.actionUserDetailFragmentSelf(data.login, null)
-//        view.changeNavigation(action)
-//    }
-
     override fun onUserClicked(view: View, data: UserModel) {
-
+        val action =
+            FollowingFragmentDirections.actionFollowingFragmentToDetailFragment(data.login, null)
+        findNavController().navigate(action)
     }
 }

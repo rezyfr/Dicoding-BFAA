@@ -42,11 +42,13 @@ class FavoriteWidget : AppWidgetProvider() {
             appWidgetManager.updateAppWidget(appWidgetId, views)
         }
 
-        fun sendRefreshBroadcast(context: Context) {
-            val intent = Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE).apply {
-                component = ComponentName(context, FavoriteWidget::class.java)
+        fun sendRefreshBroadcast(context: Context?) {
+            context?.let { ctx ->
+                val intent = Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE).apply {
+                    component = ComponentName(ctx, FavoriteWidget::class.java)
+                }
+                ctx.sendBroadcast(intent)
             }
-            context.sendBroadcast(intent)
         }
     }
 

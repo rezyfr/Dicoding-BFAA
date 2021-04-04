@@ -11,6 +11,8 @@ import com.rezyfr.submission3.R
 import com.rezyfr.submission3.base.BaseActivity
 import com.rezyfr.submission3.base.BaseViewModel
 import com.rezyfr.submission3.databinding.ActivityMainBinding
+import com.rezyfr.submission3.ui.detail.DetailFragmentDirections
+import com.rezyfr.submission3.ui.favorite.FavoriteFragmentDirections
 import com.rezyfr.submission3.ui.home.HomeFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -71,7 +73,13 @@ class MainActivity : BaseActivity<BaseViewModel, ActivityMainBinding>() {
                     navHostFragment.findNavController().navigate(action)
                 }
                 R.id.menu_settings -> {
-
+                    val action = when(navHostFragment.findNavController().currentDestination?.id){
+                        R.id.homeFragment -> HomeFragmentDirections.actionHomeFragmentToSettingsFragment()
+                        R.id.userDetailFragment -> DetailFragmentDirections.actionDetailFragmentToSettingsFragment()
+                        R.id.favoriteFragment -> FavoriteFragmentDirections.actionFavoriteFragmentToSettingsFragment()
+                        else -> HomeFragmentDirections.actionHomeFragmentToSettingsFragment()
+                    }
+                    navHostFragment.findNavController().navigate(action)
                 }
             }
             false

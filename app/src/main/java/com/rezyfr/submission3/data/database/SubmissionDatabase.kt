@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.rezyfr.submission3.data.database.dao.FavoriteDao
 import com.rezyfr.submission3.data.entity.UserFavoriteEntity
 
-@Database(version = 1, exportSchema = true, entities = [UserFavoriteEntity::class])
+@Database(version = 1, exportSchema = false, entities = [UserFavoriteEntity::class])
 abstract class SubmissionDatabase : RoomDatabase() {
     companion object {
         @Volatile

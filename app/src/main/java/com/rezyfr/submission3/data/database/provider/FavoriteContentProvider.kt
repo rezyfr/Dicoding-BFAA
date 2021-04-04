@@ -13,10 +13,6 @@ import com.rezyfr.submission3.utils.Constant.AUTHORITY
 import com.rezyfr.submission3.utils.Constant.FAVORITE_CONTENT_URI
 import com.rezyfr.submission3.utils.Constant.TABLE_NAME
 import com.rezyfr.submission3.utils.MappingHelper.toFavoriteUserEntity
-import dagger.hilt.EntryPoint
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
-import javax.inject.Inject
 
 class FavoriteContentProvider : ContentProvider(){
 

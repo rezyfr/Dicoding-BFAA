@@ -12,7 +12,7 @@
     </style>
 
     <style name="ThemeOverlay.Submission3.AppWidgetContainer" parent="">
-        <item name="appWidgetBackgroundColor">@color/light_blue_900</item>
-        <item name="appWidgetTextColor">@color/light_blue_200</item>
+        <item name="appWidgetBackgroundColor">@color/colorPrimary</item>
+        <item name="appWidgetTextColor">@color/colorOnPrimaryVariant</item>
     </style>
 </resources>

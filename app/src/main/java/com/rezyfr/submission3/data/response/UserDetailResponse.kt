@@ -2,8 +2,7 @@ package com.rezyfr.submission3.data.response
 
 import android.os.Parcelable
 import com.rezyfr.submission3.data.entity.UserFavoriteEntity
-import kotlinx.android.parcel.Parcelize
-import java.io.Serializable
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class UserDetailResponse(

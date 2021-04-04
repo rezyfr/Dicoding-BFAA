@@ -3,7 +3,7 @@ package com.rezyfr.submission3.utils
 import android.content.ContentValues
 import android.database.Cursor
 import com.rezyfr.submission3.data.entity.UserFavoriteEntity
-import java.util.ArrayList
+import java.util.*
 
 object MappingHelper {
 

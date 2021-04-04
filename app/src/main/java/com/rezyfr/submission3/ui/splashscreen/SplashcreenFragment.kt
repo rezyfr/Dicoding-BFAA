@@ -1,6 +1,5 @@
 package com.rezyfr.submission3.ui.splashscreen
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -25,8 +24,8 @@ class SplashscreenFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         Handler(Looper.getMainLooper()).postDelayed({
-                val action = SplashscreenFragmentDirections.actionSplashscreenFragmentToHomeFragment()
-                findNavController().navigate(action)
-        }, 2500)
+            val action = SplashscreenFragmentDirections.actionSplashscreenFragmentToHomeFragment()
+            findNavController().navigate(action)
+        }, 1500)
     }
 }

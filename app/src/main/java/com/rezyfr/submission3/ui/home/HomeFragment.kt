@@ -1,7 +1,6 @@
 package com.rezyfr.submission3.ui.home
 
 import android.os.Bundle
-import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.viewModels
@@ -11,7 +10,6 @@ import com.rezyfr.submission3.R
 import com.rezyfr.submission3.base.BaseFragment
 import com.rezyfr.submission3.data.model.UserModel
 import com.rezyfr.submission3.databinding.FragmentHomeBinding
-import com.rezyfr.submission3.utils.hideLoadingDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

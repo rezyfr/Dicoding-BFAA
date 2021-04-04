@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import com.rezyfr.submission3.base.BaseViewModel
 import com.rezyfr.submission3.data.model.UserModel
 import com.rezyfr.submission3.data.repository.UserRepository
-import com.rezyfr.submission3.data.response.UserDetailResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

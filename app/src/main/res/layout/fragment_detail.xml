@@ -49,6 +49,7 @@
                         android:layout_height="125dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="15dp"
+                        android:contentDescription="@string/cd_avatar"
                         tools:src="@drawable/ic_person" />
 
                     <TextView
@@ -125,6 +126,7 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="20dp"
             android:backgroundTint="#FF5252"
+            android:contentDescription="@string/cd_fab"
             android:src="@drawable/ic_favorite_outlined"
             app:borderWidth="0dp"
             app:layout_constraintBottom_toBottomOf="parent"

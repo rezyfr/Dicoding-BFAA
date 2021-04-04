@@ -25,4 +25,12 @@ object Constant {
     const val FAV_PUBLIC_REPOS = "public_repos"
     const val FAV_TYPE = "type"
     const val FAV_UPDATED_AT = "updated_at"
+
+    const val ALARM_CHANNEL_ID = "alarm_channel"
+    const val ALARM_CHANNEL_NAME = "Alarm Channel"
+    const val ALARM_ID_REPEATING = 1
+    const val ALARM_TITLE = "alarm_title"
+    const val ALARM_MESSAGE = "alarm_message"
+
+    const val PREF_REMINDER = "pref_reminder"
 }

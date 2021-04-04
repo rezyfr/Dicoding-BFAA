@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Submission3</string>
+    <string name="no_internet_connection">No Internet Connection</string>
+    <string name="connect_timeout">Connect Timeout</string>
+    <string name="splashscreen">Splashscreen</string>
+    <string name="followers_count">"%d followers"</string>
+    <string name="following_count">"%d following"</string>
+    <string name="repository">"%d repositories"</string>
+    <string name="cd_avatar">Avatar Image</string>
+    <string name="cd_divider">Divider between recyclerview item</string>
+    <string name="cd_splash">Splashscreen image</string>
+    <string name="cd_fab">FAB for add user to favorite list</string>
+</resources>
