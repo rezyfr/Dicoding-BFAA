@@ -21,12 +21,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(),
     override fun layoutRes() = R.layout.fragment_home
     override val viewModel by viewModels<HomeViewModel>()
     override var title = MutableLiveData("Github Search User")
-    override var toolbarMenu = MutableLiveData(true)
 
     private var adapter = HomeAdapter(this)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        showToolbarMenu(true, true)
+        showToolbarBackButton(false)
         binding.apply {
             rvSearch.adapter = adapter
             etSearch.apply {

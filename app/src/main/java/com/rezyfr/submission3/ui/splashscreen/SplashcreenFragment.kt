@@ -25,8 +25,8 @@ class SplashscreenFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            val action = SplashscreenFragmentDirections.actionSplashscreenFragmentToHomeFragment()
-            findNavController().navigate(action)
+                val action = SplashscreenFragmentDirections.actionSplashscreenFragmentToHomeFragment()
+                findNavController().navigate(action)
         }, 2500)
     }
 }

@@ -3,14 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_home_favorite"
+        android:id="@+id/menu_favorite"
         android:icon="@drawable/ic_favorite_filled"
         android:title="@string/menu_favorite"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/action_home_setting"
+        android:id="@+id/menu_settings"
         android:icon="@drawable/ic_settings"
         android:title="@string/menu_settings"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom"
+        />
 </menu>

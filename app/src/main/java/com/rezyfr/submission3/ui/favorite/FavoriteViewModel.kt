@@ -22,8 +22,9 @@ class FavoriteViewModel @Inject constructor(
 
     fun fetchFavoriteList() {
         viewModelScope.launch {
-            val data = withContext(Dispatchers.IO) { favoriteRepository.getFavoriteUsers().value }
-            _favoriteList.value = data
+            val data = withContext(Dispatchers.IO) { favoriteRepository.getFavoriteUsers() }
+            _favoriteList.value = data.value
+
         }
     }
 }

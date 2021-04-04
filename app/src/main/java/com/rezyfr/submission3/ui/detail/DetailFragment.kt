@@ -1,7 +1,9 @@
 package com.rezyfr.submission3.ui.detail
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
@@ -19,6 +21,15 @@ class DetailFragment : BaseFragment<FragmentDetailBinding, DetailViewModel>() {
     override var title = MutableLiveData("Detail User")
     override val viewModel by viewModels<DetailViewModel>()
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        showToolbarMenu()
+        showToolbarBackButton()
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {

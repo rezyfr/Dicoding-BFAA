@@ -18,7 +18,7 @@ interface FavoriteRepository {
     suspend fun addFavoriteUser(model: UserFavoriteEntity): LiveData<Long>
     suspend fun checkFavoriteUser(userId: Int): LiveData<UserFavoriteEntity?>
     suspend fun deleteFavoriteUser(user: UserFavoriteEntity): LiveData<Long>
-    fun getFavoriteUsers(): LiveData<List<UserFavoriteEntity>>
+    suspend fun getFavoriteUsers(): LiveData<List<UserFavoriteEntity>>
 }
 
 class FavoriteRepositoryImpl @Inject constructor(
@@ -58,7 +58,7 @@ class FavoriteRepositoryImpl @Inject constructor(
         return liveData
     }
 
-    override fun getFavoriteUsers(): LiveData<List<UserFavoriteEntity>> {
+    override suspend fun getFavoriteUsers(): LiveData<List<UserFavoriteEntity>> {
         val liveData = MutableLiveData<List<UserFavoriteEntity>>()
 
         val cursor = context.contentResolver

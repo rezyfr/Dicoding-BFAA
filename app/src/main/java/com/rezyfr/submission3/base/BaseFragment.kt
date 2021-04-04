@@ -27,7 +27,6 @@ abstract class BaseFragment<T : ViewDataBinding, VM : BaseViewModel> : Fragment(
     lateinit var binding: T
     abstract var title: MutableLiveData<String>
     open var toolbarBackButton = MutableLiveData(false)
-    open var toolbarMenu = MutableLiveData(false)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,12 +38,8 @@ abstract class BaseFragment<T : ViewDataBinding, VM : BaseViewModel> : Fragment(
         title.observe(viewLifecycleOwner, {
             setToolbar(it)
         })
-        toolbarBackButton.observe(viewLifecycleOwner, {
-            showToolbarBackButton(it)
-        })
-        toolbarMenu.observe(viewLifecycleOwner, {
-            showToolbarMenu(it)
-        })
+        showToolbarMenu()
+        showToolbarBackButton()
         observeData()
 
         return binding.root
@@ -79,9 +74,9 @@ abstract class BaseFragment<T : ViewDataBinding, VM : BaseViewModel> : Fragment(
 
     private fun setToolbar(title: String) = (activity as MainActivity).changeToolbarTitle(title)
 
-    open fun showToolbarBackButton(show: Boolean) = (activity as MainActivity).setToolbarBackButton(show)
+    open fun showToolbarBackButton(show: Boolean = true) = (activity as MainActivity).setToolbarBackButton(show)
 
-    open fun showToolbarMenu(show: Boolean) = (activity as MainActivity).setToolbarMenu(show)
+    open fun showToolbarMenu(show: Boolean = true, isHome: Boolean = false) = (activity as MainActivity).setToolbarMenu(show, isHome)
 
     open fun handleLoading(isLoading: Boolean) {
         if (isLoading) context?.showLoadingDialog() else hideLoadingDialog()

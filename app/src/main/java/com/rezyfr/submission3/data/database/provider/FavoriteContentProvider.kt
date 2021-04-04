@@ -8,6 +8,7 @@ import android.net.Uri
 import androidx.core.net.toUri
 import com.rezyfr.submission3.SubmissionApp
 import com.rezyfr.submission3.data.database.SubmissionDatabase
+import com.rezyfr.submission3.ui.widget.FavoriteWidget
 import com.rezyfr.submission3.utils.Constant.AUTHORITY
 import com.rezyfr.submission3.utils.Constant.FAVORITE_CONTENT_URI
 import com.rezyfr.submission3.utils.Constant.TABLE_NAME
@@ -50,7 +51,7 @@ class FavoriteContentProvider : ContentProvider(){
             USERS -> db?.favoriteDao()?.getAllFavorites()
             USER_ID -> {
                 uri.lastPathSegment?.toInt()?.let { id ->
-                    db?.favoriteDao()?.getFavoriteByUserId((id))
+                    db?.favoriteDao()?.getFavoriteByUserId(id)
                 }
             }
             else -> null
@@ -79,9 +80,11 @@ class FavoriteContentProvider : ContentProvider(){
 
     override fun delete(uri: Uri, selection: String?, selectionArgs: Array<out String>?): Int {
         val deleted: Int = when (USER_ID) {
-            uriMatcher.match(uri) -> db?.favoriteDao()?.deleteFavoriteByUserId(
-                uri.lastPathSegment?.toInt() ?: 0
-            ) ?: 0
+            uriMatcher.match(uri) -> {
+                db?.favoriteDao()?.deleteFavoriteByUserId(
+                    uri.lastPathSegment?.toInt() ?: 0
+                ) ?: 0
+            }
             else -> 0
         }
 
@@ -101,9 +104,7 @@ class FavoriteContentProvider : ContentProvider(){
         return 0
     }
 
-
     private fun refreshWidgetUser() {
-        // Refresh data in UserWidget
-//        UserWidget.sendRefreshBroadcast(app)
+        app?.let { FavoriteWidget.sendRefreshBroadcast(it) }
     }
 }

@@ -14,6 +14,7 @@ import com.rezyfr.submission3.databinding.ActivityMainBinding
 import com.rezyfr.submission3.ui.home.HomeFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class MainActivity : BaseActivity<BaseViewModel, ActivityMainBinding>() {
 
@@ -25,7 +26,8 @@ class MainActivity : BaseActivity<BaseViewModel, ActivityMainBinding>() {
     var isMenuShown = false
 
     override fun setupView() {
-        navHostFragment = supportFragmentManager.findFragmentById(R.id.main_nav_host_fragment) as NavHostFragment
+        navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.main_nav_host_fragment) as NavHostFragment
         setupToolbar()
         setupNavigation()
     }
@@ -51,20 +53,28 @@ class MainActivity : BaseActivity<BaseViewModel, ActivityMainBinding>() {
         }
     }
 
-    fun setToolbarMenu(show: Boolean) {
+    fun setToolbarMenu(show: Boolean, isHome: Boolean = false) {
         if (show && !isMenuShown) {
             isMenuShown = true
             binding.toolbarMain.inflateMenu(R.menu.menu_home)
-            binding.toolbarMain.setOnMenuItemClickListener {
-                when(it.itemId){
-                    R.id.action_home_favorite -> {
-                        val action =
-                            HomeFragmentDirections.actionHomeFragmentToFavoriteFragment()
-                        navHostFragment.findNavController().navigate(action)
-                    }
+            binding.toolbarMain.menu
+        }
+
+        val register: MenuItem = binding.toolbarMain.menu.findItem(R.id.menu_favorite)
+        register.isVisible = isHome
+
+        binding.toolbarMain.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.menu_favorite -> {
+                    val action =
+                        HomeFragmentDirections.actionHomeFragmentToFavoriteFragment()
+                    navHostFragment.findNavController().navigate(action)
                 }
-                false
+                R.id.menu_settings -> {
+
+                }
             }
+            false
         }
     }
 
