@@ -11,8 +11,4 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="ThemeOverlay.Submission3.AppWidgetContainer" parent="">
-        <item name="appWidgetBackgroundColor">@color/colorPrimary</item>
-        <item name="appWidgetTextColor">@color/colorOnPrimaryVariant</item>
-    </style>
 </resources>

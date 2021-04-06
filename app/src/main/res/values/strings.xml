@@ -4,16 +4,12 @@
     <string name="connect_timeout">Connect Timeout</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_favorite">Favorite</string>
-    <string name="home_title">Github Search User</string>
     <string name="username">Username</string>
     <string name="search_result">%s users</string>
     <string name="followers_count">"%d followers"</string>
     <string name="following_count">"%d following"</string>
-    <string name="followers">"Follower"</string>
-    <string name="following">"Following"</string>
     <string name="repository">"%d repositories"</string>
     <string name="appwidget_text">Favorited Users</string>
-    <string name="add_widget">Add widget</string>
     <string name="no_favorited_user">No Favorited User</string>
     <string name="daily_reminder">Daily Reminder</string>
     <string name="cd_avatar">Avatar Image</string>

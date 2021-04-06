@@ -6,16 +6,30 @@ import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.os.Handler
+import android.os.HandlerThread
 import android.widget.RemoteViews
 import androidx.core.net.toUri
 import com.rezyfr.submission3.R
+import com.rezyfr.submission3.data.database.provider.FavoriteContentObserver
 import com.rezyfr.submission3.ui.MainActivity
+import com.rezyfr.submission3.utils.Constant.FAVORITE_CONTENT_URI
+
 
 /**
  * Implementation of App Widget functionality.
  */
 class FavoriteWidget : AppWidgetProvider() {
 
+    private var observer: FavoriteContentObserver? =null
+    private var thread: HandlerThread? = null
+    private var handler: Handler? = null
+
+    init {
+        thread = HandlerThread("FavoriteWidget worker")
+        thread!!.start()
+        handler = Handler(thread!!.looper)
+    }
     companion object {
         fun updateAppWidget(
             context: Context,
@@ -48,6 +62,19 @@ class FavoriteWidget : AppWidgetProvider() {
                     component = ComponentName(ctx, FavoriteWidget::class.java)
                 }
                 ctx.sendBroadcast(intent)
+            }
+        }
+    }
+
+    override fun onEnabled(context: Context?) {
+        super.onEnabled(context)
+        val r = context!!.contentResolver
+        if (observer == null) {
+            val mgr = AppWidgetManager.getInstance(context)
+            val cn = ComponentName(context, FavoriteWidget::class.java)
+            observer = FavoriteContentObserver(mgr, cn, handler)
+            observer?.let{
+                r.registerContentObserver(FAVORITE_CONTENT_URI.toUri(), true, it)
             }
         }
     }

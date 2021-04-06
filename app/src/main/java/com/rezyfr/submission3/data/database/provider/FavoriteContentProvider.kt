@@ -69,7 +69,7 @@ class FavoriteContentProvider : ContentProvider(){
 
         context?.contentResolver?.notifyChange(FAVORITE_CONTENT_URI.toUri(), null)
 
-        refreshWidgetUser()
+//        refreshWidgetUser()
 
         return Uri.parse("$FAVORITE_CONTENT_URI/$added")
     }
@@ -86,7 +86,7 @@ class FavoriteContentProvider : ContentProvider(){
 
         context?.contentResolver?.notifyChange(FAVORITE_CONTENT_URI.toUri(), null)
 
-        refreshWidgetUser()
+//        refreshWidgetUser()
 
         return deleted
     }
@@ -97,6 +97,7 @@ class FavoriteContentProvider : ContentProvider(){
         selection: String?,
         selectionArgs: Array<out String>?
     ): Int {
+        context?.contentResolver?.notifyChange(uri, null)
         return 0
     }
 
