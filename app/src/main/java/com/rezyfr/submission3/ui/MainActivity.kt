@@ -46,13 +46,8 @@ class MainActivity : BaseActivity<BaseViewModel, ActivityMainBinding>() {
     }
 
     fun setToolbarBackButton(show: Boolean) {
-        if (show) {
-            supportActionBar?.setDisplayHomeAsUpEnabled(true)
-            supportActionBar?.setDisplayShowHomeEnabled(true)
-        } else {
-            supportActionBar?.setDisplayHomeAsUpEnabled(false)
-            supportActionBar?.setDisplayShowHomeEnabled(false)
-        }
+        supportActionBar?.setDisplayHomeAsUpEnabled(show)
+        supportActionBar?.setDisplayShowHomeEnabled(show)
     }
 
     fun setToolbarMenu(show: Boolean, isHome: Boolean = false) {
@@ -73,7 +68,7 @@ class MainActivity : BaseActivity<BaseViewModel, ActivityMainBinding>() {
                     navHostFragment.findNavController().navigate(action)
                 }
                 R.id.menu_settings -> {
-                    val action = when(navHostFragment.findNavController().currentDestination?.id){
+                    val action = when (navHostFragment.findNavController().currentDestination?.id) {
                         R.id.homeFragment -> HomeFragmentDirections.actionHomeFragmentToSettingsFragment()
                         R.id.userDetailFragment -> DetailFragmentDirections.actionDetailFragmentToSettingsFragment()
                         R.id.favoriteFragment -> FavoriteFragmentDirections.actionFavoriteFragmentToSettingsFragment()

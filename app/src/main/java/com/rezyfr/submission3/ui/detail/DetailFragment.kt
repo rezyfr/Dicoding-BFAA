@@ -63,23 +63,25 @@ class DetailFragment : BaseFragment<FragmentDetailBinding, DetailViewModel>() {
             viewModel.checkIsUserFavorited(it.id)
         })
 
-        viewModel.favoriteEntity.observe(viewLifecycleOwner, {
-            if (it == null) {
-                binding.fabDetail.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_favorite_outlined
-                    )
+        viewModel.favoriteEntity.observe(viewLifecycleOwner, ::observeUserEntity)
+    }
+
+    private fun observeUserEntity(userFavoriteEntity: UserFavoriteEntity?){
+        if (userFavoriteEntity == null) {
+            binding.fabDetail.setImageDrawable(
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.ic_favorite_outlined
                 )
-            } else {
-                binding.fabDetail.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_favorite_filled
-                    )
+            )
+        } else {
+            binding.fabDetail.setImageDrawable(
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.ic_favorite_filled
                 )
-                favoriteEntity = it
-            }
-        })
+            )
+            favoriteEntity = userFavoriteEntity
+        }
     }
 }

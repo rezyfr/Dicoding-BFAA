@@ -22,7 +22,6 @@ interface FavoriteRepository {
 }
 
 class FavoriteRepositoryImpl @Inject constructor(
-    private val favoriteDao: FavoriteDao,
     @ApplicationContext private val context: Context
 ) : FavoriteRepository {
 
@@ -35,7 +34,6 @@ class FavoriteRepositoryImpl @Inject constructor(
         cursor?.let { liveData.postValue(1) }
 
         return liveData
-//        favoriteDao.insert(model)
     }
 
     override suspend fun checkFavoriteUser(userId: Int): LiveData<UserFavoriteEntity?> {
@@ -70,7 +68,6 @@ class FavoriteRepositoryImpl @Inject constructor(
         }
 
         return liveData
-//        return favoriteDao.getAllFavorites()
     }
 
     override suspend fun deleteFavoriteUser(user: UserFavoriteEntity): LiveData<Long> {

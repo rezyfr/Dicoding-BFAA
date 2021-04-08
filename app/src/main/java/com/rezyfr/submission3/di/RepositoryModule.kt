@@ -28,9 +28,8 @@ object RepositoryModule {
     @Provides
     @Singleton
     fun provideFavoriteRepository(
-        favoriteDao: FavoriteDao,
         @ApplicationContext context: Context
     ): FavoriteRepository {
-        return FavoriteRepositoryImpl(favoriteDao, context)
+        return FavoriteRepositoryImpl(context)
     }
 }

@@ -69,8 +69,6 @@ class FavoriteContentProvider : ContentProvider(){
 
         context?.contentResolver?.notifyChange(FAVORITE_CONTENT_URI.toUri(), null)
 
-//        refreshWidgetUser()
-
         return Uri.parse("$FAVORITE_CONTENT_URI/$added")
     }
 
@@ -86,8 +84,6 @@ class FavoriteContentProvider : ContentProvider(){
 
         context?.contentResolver?.notifyChange(FAVORITE_CONTENT_URI.toUri(), null)
 
-//        refreshWidgetUser()
-
         return deleted
     }
 
@@ -99,9 +95,5 @@ class FavoriteContentProvider : ContentProvider(){
     ): Int {
         context?.contentResolver?.notifyChange(uri, null)
         return 0
-    }
-
-    private fun refreshWidgetUser() {
-        app?.let { FavoriteWidget.sendRefreshBroadcast(it) }
     }
 }
